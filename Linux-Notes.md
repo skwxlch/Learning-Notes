@@ -89,7 +89,7 @@ A useful thing to do is redirect the results to a file (/tmp is typically a word
       - /tmp - temporary storage for system processes
       - /var/tmp - temporary storage for system processes
       - /opt - additional packages/software
-      - /var/mail - mail directory
+      - /var/mail - mail directory (also /var/spool/mail)
       - /var/www/* - web directory, often containing the web log file or database which we can look through for credentials.
 
   - #### *FILES:* ####
