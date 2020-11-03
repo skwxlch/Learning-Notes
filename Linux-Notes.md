@@ -109,7 +109,7 @@ Check on https://gtfobins.github.io/ for anything useful.
 Sometimes the results will contain something cutsom which you can go on to enumerate, reverse engineer, and exploit.
 
 
-One interesting idea with suid came about when exploiting this room: https://tryhackme.com/jr/zsecurityctf1 on Try Hack Me. When you have higher permissions on the cp command, you can create your own version of the passwd file, or sudoers file, and then add yourself a backdoor in (whether a backdor user in the case of the passwd file, adjusting a users group in the passwd file, or giving them sudo permissions to execute a vulnerable binary as root. The same can apply with sudo.
+One interesting idea with suid came about when exploiting this room: https://tryhackme.com/jr/zsecurityctf1 on Try Hack Me. When you have higher permissions on the cp command, you can create your own version of the passwd file, or sudoers file, and then add yourself a backdoor in (whether a backdor user in the case of the passwd file, adjusting a users group in the passwd file, or giving them sudo permissions to execute a vulnerable binary as root). The same can apply with sudo.
 
 
 ### *Sudo:* ###
