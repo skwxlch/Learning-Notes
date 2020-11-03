@@ -42,6 +42,9 @@ sudo mount -t nfs 0.0.0.0:/share mountfolder #mounts the share specified from th
 sudo umount mountfolder #unmounts the file share from your system.
 ```
 
+## MYSQL - DEFAULT PORT 3306: ##
+
+
 ## BRUTE FORCING NETWORK SERVICES WITH HYDRA: ##
 https://redteamtutorials.com/2018/10/25/hydra-brute-force-techniques/
 ```bash
