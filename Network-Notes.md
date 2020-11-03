@@ -32,7 +32,7 @@ It is possible to use NETCAT or TELNET as an email client, and you can connect t
 smbclient -L //0.0.0.0/ #Lists all shares accessible by anyone. Use -U to specify a username.
 smbclient //0.0.0.0/sharename #connects to the share so you can look at the files on it.
 ```
-If SMB is open, you can use the (enum4linux.pl)[https://github.com/CiscoCXSecurity/enum4linux] script in order to enumerate users with it's 'RID cycling function'.
+If SMB is open, you can use the [enum4linux.pl](https://github.com/CiscoCXSecurity/enum4linux) script in order to enumerate users with it's 'RID cycling function'.
 
 
 ## NFS - DEFAULT PORT 2049: ##
