@@ -72,8 +72,7 @@ Once we know our username, user id, and group names and ids, we can begin enumer
 
   #SSH KEYS
   find / -name authorized_keys -exec ls -la {} \;
-  find / -name id_rsa -exec ls -la {}; cat {} \;
-  find / -name *ssh* -exec ls -la {} \;
+  find / -name id_rsa* -exec ls -la {}; cat {} \;
   ```
 
 We can run the find command with '-exec ls -la {} \;' to run a command upon every result found (the result of find is filled into the {}).
@@ -99,6 +98,8 @@ A useful thing to do is redirect the results to a file (/tmp is typically a word
       - /etc/sudoers - we may be able to read sudo permissions of users without using sudo -l, hoping for a NOPASSWD entries so that we may use and exploit. If this file is writeable, we can append this line to give ourselves sudo access to all commands to privesc with: ```bash echo "<username> ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers ```
       - /home/*/.ssh/id_rsa - this is a users ssh private key and if we can access it, we can copy to our system and ssh in as that user.
       - /home/*/.ssh/authorized_keys - if this file is writeable, we can add our own public key to it. Also, If we can make a directory of .ssh and then create an authorized_key file for the user.
+      
+      IT IS WORTH NOTING: When a directory is executable but not readable, we must know which files are in there to be able to gaina ccess to them - a simple 'ls' command will not work in showing us the files inside. It is worth trying to list all users id_rsa files in /home/user/.ssh/id_rsa, just in case they have set permissions incorrectly so that everyone may read this file. Likewise, checking to see if we can write to their authorized_keys file in the same directory is just as crucial, as we mya be able to get ourselves a backdoor this way.
 
 
 ### *Suid Files:* ###
