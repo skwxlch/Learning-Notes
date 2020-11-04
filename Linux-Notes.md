@@ -99,7 +99,7 @@ A useful thing to do is redirect the results to a file (/tmp is typically a word
       - /home/*/.ssh/id_rsa - this is a users ssh private key and if we can access it, we can copy to our system and ssh in as that user.
       - /home/*/.ssh/authorized_keys - if this file is writeable, we can add our own public key to it. Also, If we can make a directory of .ssh and then create an authorized_key file for the user.
       
-      IT IS WORTH NOTING: When a directory is executable but not readable, we must know which files are in there to be able to gaina ccess to them - a simple 'ls' command will not work in showing us the files inside. It is worth trying to list all users id_rsa files in /home/user/.ssh/id_rsa, just in case they have set permissions incorrectly so that everyone may read this file. Likewise, checking to see if we can write to their authorized_keys file in the same directory is just as crucial, as we mya be able to get ourselves a backdoor this way.
+      IT IS WORTH NOTING: When a directory is executable but not readable, we must know which files are in there to be able to gaina ccess to them - a simple 'ls' command will not work in showing us the files inside. It is worth trying to list all users id_rsa files in /home/user/.ssh/id_rsa, just in case they have set permissions incorrectly so that everyone may read this file. Likewise, checking to see if we can write to their authorized_keys file in the same directory is just as crucial, as we may be able to get ourselves a backdoor this way (as discussed above).
 
 
 ### *Suid Files:* ###
