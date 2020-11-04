@@ -91,6 +91,7 @@ A useful thing to do is redirect the results to a file (/tmp is typically a word
       - /opt - additional packages/software
       - /var/mail - mail directory (also /var/spool/mail)
       - /var/www/* - web directory, often containing the web log file or database which we can look through for credentials.
+      - /etc/sudoers.d/ - can contain files which contain sudo information for specific users.
 
   - #### *FILES:* ####
       - /etc/passwd - cat and pipe into 'grep -v nologin' to find names of all users on the box that have shells. If writeable we can duplicate the root users line and just generate a password hash with: ```bash openssl passwd -1 -salt <salt> <password>```, then place it in the position of the password. 
