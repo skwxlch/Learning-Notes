@@ -126,17 +126,17 @@ Check on https://gtfobins.github.io/ for anything useful.
 Sometimes the results will contain something custom which you can go on to enumerate, reverse engineer, and exploit.
 If the output is something like 'ALL = (jones) /usr/local/bin/mycommand', then we can run 'mycommand' as the 'jones' user. We do this with:
 
-
 ```bash
 sudo -u jones /usr/local/bin/mycommand
 ```
 
 Probably one of the biggest Sudo exploits is [CVE-2019-14287](https://www.exploit-db.com/exploits/47502). If the user has sudo permissions: '(ALL, !root) ALL', this can be exploited. A FULL TTY IS REQUIRED (so stabilise your shell).
 
-
 ```bash
 sudo -u#-1 /bin/bash -p
 ```
+
+One other Sudo CVE is [CVE-2019-18634](https://github.com/saleemrashid/sudo-cve-2019-18634/blob/master/exploit.c), which is a buffer overflow exploit. If password feedback is enabled in the /etc/sudoers file with a sudo version of 1.8.26 or below, then the sudo version is vulnerable. Password feedback is when you type a character and an * or symbol shows up to identify that you have typed in a key.
 
 
 ### *LD_PRELOAD SUDO LINE:* ###
