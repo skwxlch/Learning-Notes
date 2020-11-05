@@ -131,7 +131,7 @@ If the output is something like 'ALL = (jones) /usr/local/bin/mycommand', then w
 sudo -u jones /usr/local/bin/mycommand
 ```
 
-Probably one of the biggest Sudo exploits is CVE-2019-14287. If the user has sudo permissions: '(ALL, !root) ALL', this can be exploited. A FULL TTY IS REQUIRED (so stabilise your shell).
+Probably one of the biggest Sudo exploits is [CVE-2019-14287](https://www.exploit-db.com/exploits/47502). If the user has sudo permissions: '(ALL, !root) ALL', this can be exploited. A FULL TTY IS REQUIRED (so stabilise your shell).
 
 
 ```bash
