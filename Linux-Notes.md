@@ -116,7 +116,7 @@ One interesting idea with suid came about when exploiting this room: https://try
 
 
 ### *Shared Object Injection:* ###
-We can use 'strace' to find out what the binary is actually doing, and look for specific things. We are looking for what it is trying to access, but failing to.
+When a file has SUID permissions, or sudo permissions, we can potentially use it to priv esc. If no GTFO bin exists, and we cnanot exploit in another way, then we can use 'strace' to find out what a binary is actually doing, and look for specific things. We are looking for what it is trying to access, but failing to.
 
 ```bash
 strace /usr/local/bin/suid-binary 2>&1 | grep "open|access|no such file"
