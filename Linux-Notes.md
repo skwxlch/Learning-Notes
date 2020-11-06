@@ -220,7 +220,7 @@ Python will look in the current folder with the rest fo the .py code files. It t
 
 
 ### *Processes:* ###
-To quickly find sechedules tasks, we can run donwload and run [pspy](https://github.com/DominicBreuker/pspy). This tells us all processes that are running. Using the -i flag, we can specify how often the scan should occur in milliseconds.
+To quickly find sechedules tasks, we can run donwload and run [pspy](https://github.com/DominicBreuker/pspy). This tells us all processes that are running as they run. Using the -i flag, we can specify how often the scan should occur in milliseconds.
 
 Other useful commands:
 ```bash
@@ -233,6 +233,9 @@ systemctl list-timers --all
 ps -aux #List all services running.
 ps -eaf --forest #Shows in a nice format, and clearly shows children processes.
 ```
+
+Crontab has a PATH variable which it uses to define where it will look for binaries to run. Therefore, if a cron job is set up which does not specify the full path to the binary, it can be exploited by placing a malicious binary with the same name within the path, hopefully sooner along than where the script/command running is. Of course, if you can edit the file which is called anyway, then you are sorted, and should just do that.
+
 
 
 ### *Wildcard Exploitation:* ###
