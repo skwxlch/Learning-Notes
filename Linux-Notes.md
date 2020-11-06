@@ -191,7 +191,7 @@ Check on https://gtfobins.github.io/ for anything useful.
 'ep' is another interesting capability, meaning the binary has all capabilities.
 
 
-### *PATH Variable Exploitation:* ###
+### *ENVIRONMENT Variable Exploitation:* ###
 When we have access to a binary that is SUID, this obviously allows for a privilege escalation vector (whether lateral or upwards). Even better if we have access to the code behind the binary... if not we can reverse engineer it, running it to find out what it is doing, decompiling in Ghidra, running 'strings' or 'strace' and analysing it. The main thing we are looking for, is a command that is run without its full path. For example running 'date' rather than '/usr/bin/date'.
 
 Linux looks for binaries in a way which makes it exploitable. It will look in the user's PATH variable, which contains a lists of directories. Therefore, if we prepend '/tmp:' to the beginning of the PATH variable, then make our own 'date' file that is executable in the /tmp folder, we can make the program run whatever code we wish, with privileges of the user which the program runs as.
@@ -203,6 +203,13 @@ export PATH=/tmp:$PATH
 Likewise, if a binary is using an environment variable that is within our control, we can change it and make the program execute differently.
 ```bash
 env #prints all environment variables.
+```
+
+So, what do we do if the suid binary uses the full path to call a system command... simple - define a fucntion with that as the name! Let's say that the suid binary calls /usr/bin/date. We create a bash function containing malicious code with this name and export it, then run the suid binary again and instead of calling the date command, it runs our code. Clever!
+
+```bash
+function /usr/bin/date() { cp /bin/bash /tmp && chmod +s /tmp/bash; }
+export -f /usr/bin/date
 ```
 
 
